@@ -1,0 +1,17 @@
+.postRow  {
+  cursor: pointer;
+}
+
+.postRow:hover {
+  background: #e5e8eb;
+}
+
+.select {
+  margin-bottom: 20px;
+}
+
+.selectUserWrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
