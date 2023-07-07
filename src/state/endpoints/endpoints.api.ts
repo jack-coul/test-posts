@@ -14,7 +14,7 @@ export const defaultApi = createApi({
     getPost: builder.query<PostDTO, { id: number }>({
       query: ({ id }) => `posts/${id}`,
     }),
-    getUsers: builder.query<TransformUsers[], null>({
+    getUsers: builder.query<TransformUsers[], void>({
       query: () => 'users',
       transformResponse: (users: UserDTO[]): TransformUsers[] => {
         return users.map((item) => ({ value: `${item.id}`, label: item.username }));

@@ -10,12 +10,12 @@ export const Posts = () => {
   const [value, setValue] = useState<string | null>(null);
 
   const { data } = useGetPostsQuery({ userId: value ? +value : undefined });
-  const { data: usersData } = useGetUsersQuery(null, { skip: !value });
+  const { data: usersData } = useGetUsersQuery();
 
   if (!data) return <LoaderComponent />;
 
   return (
-    <>
+    <div>
       {usersData && (
         <div className={styles.selectUserWrapper}>
           <Select
@@ -42,6 +42,6 @@ export const Posts = () => {
           ))}
         </tbody>
       </Table>
-    </>
+    </div>
   );
 };
