@@ -4,6 +4,7 @@ import { CommentDTO, PostDTO, PostsParams, TransformUsers, UserDTO } from './end
 export const defaultApi = createApi({
   reducerPath: 'defaultApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
+  tagTypes: ['Comments'],
   endpoints: (builder) => ({
     getPosts: builder.query<PostDTO[], PostsParams>({
       query: (params) => ({
@@ -30,6 +31,7 @@ export const defaultApi = createApi({
         url: 'comments',
         params,
       }),
+      providesTags: ['Comments'],
     }),
     addComment: builder.mutation<CommentDTO, Omit<CommentDTO, 'id'>>({
       query: (body) => ({
@@ -37,6 +39,7 @@ export const defaultApi = createApi({
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['Comments'],
     }),
   }),
 });
